@@ -11,13 +11,20 @@ body{
 .container{
     width: 100%;
     margin: 0;
+    position: relative;
+   padding-top: 76px;
+   
 }
+
 .header{
     background: #FFE600;
     width: 100%;
     height: 75px;
     padding: 0.75rem 0.5rem;
     border-bottom: 3px solid black;
+    position: absolute;
+    z-index: 50;
+    top:0;
 }
 .main-title{
     font-size: 2rem;
@@ -43,8 +50,43 @@ body{
     align-items: center;
 }
 
-.tags{
-
+.add-task{
+    
+    position: fixed;
+    right: 2rem;
+    bottom: 2rem;
+    color: #FFE600;
+    font-size: 1.5rem;
+}
+.add-link{
+    width: 100%;
+    height: 100%;
+}
+.task-form{
+    display: flex;
+    flex-direction:column ;
+    justify-content: space-around;
+    align-items: center;
+    gap:1rem;
+    padding: 1rem 0;
+}
+.form-element{
+    display: flex;
+    flex-direction:column ;
+    justify-content: space-around;
+    /* align-items: flex-start; */
+    width: 100%;
+    max-width: 60rem;
+}
+.btn{
+    padding:1rem 3rem ;
+    background-color: black;
+    border: none;
+    border-radius:0.6rem ;
+    color: #FFE600;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align:center;
 }
 @media screen AND (min-width:600px) {
     .task{

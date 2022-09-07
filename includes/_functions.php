@@ -9,7 +9,7 @@ $dbCo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE,PDO::FETCH_ASSOC);
 }
 catch (Exception $e) {
     die("Unable to connect to the database.".$e->getMessage());
-    }
+}
 
 function getTask($data){
     $query= $data ->prepare("SELECT * FROM `task` WHERE 'done' =0 ") ;
@@ -28,5 +28,8 @@ foreach($array as $task){
     $html.="<p>Rappel : ".$task["date_reminder"]."</p></div>";
 }
 return $html;
+}
+function sendTaskTo($array,$data){
+    $query = $data->prepare("INSERT INTO `product`(`name_product`,`price`) VALUES (:name, :price)");
 }
 ?>
