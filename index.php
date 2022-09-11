@@ -13,7 +13,7 @@ require_once "includes/_header.php"
     <ul class="task-list">
 
         <?php
-        $result = getTask($dbCo,$done);
+        $result = getAllTask($dbCo,$done);
         
         echo taskToHtml($result)
         ?>

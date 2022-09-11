@@ -51,7 +51,9 @@ body{
     justify-content: space-between;
     align-items: center;
 }
-
+.checkbox{
+    border-radius:50% ;
+}
 .add-task{
     
     position: fixed;
@@ -95,12 +97,15 @@ body{
     height:2rem ;
 }
 .manage-section{
-    width: 2rem;
-    height:auto;
+    width: 4rem;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.208);
+}
+.icon{
+    display: block;
+    font-size: 1rem;
     color: black;
+
 }
 @media screen AND (min-width:600px) {
-    .task{
-        
-    }
 }
