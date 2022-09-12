@@ -49,6 +49,7 @@ if((isset($_POST['description'])&&strlen($_POST['description'])>0)){
     "priority"=>$_POST['priority'],
     "color"=>$_POST['color']
 ]);
+header("location: index.php");
 }
 
 ?>

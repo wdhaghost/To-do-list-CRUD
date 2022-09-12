@@ -2,7 +2,8 @@
 require_once "includes/_functions.php";
 $title = "Taches Effectués";
 $done=1;
-require_once "includes/_header.php"
+require_once "includes/_header.php";
+
 ?>
 
     <a class="" href="new_task.php">

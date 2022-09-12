@@ -13,7 +13,8 @@ catch (Exception $e) {
 
 
 function getAllTask($data,$done){
-    $query= $data ->prepare("SELECT id_task,description,date_reminder,priority,color,done,id_user FROM task WHERE done=$done ") ;
+    $query= $data ->prepare("SELECT id_task,description,date_reminder,priority,color,done,id_user FROM task WHERE done=$done 
+    ORDER BY `priority`ASC") ;
     $query->execute();
     return $query->fetchAll();
 }
@@ -22,17 +23,17 @@ function getAllTask($data,$done){
 function taskToHtml(array $array):string {
 $html="";
 foreach($array as $task){
-    $html.="<li id=".$task["id_task"]." class=\"task\"> <div><label for=\"task-".$task["id_task"]."\"></label>";
-    $html.="<input class=\"checkbox\" type=\"checkbox\" name=\"task-".$task["id_task"]."\" id=\"".$task["id_task"]."\"></div>";
+   $state= $task["done"]==1 ? "undone" : "done";
+    $html.="<li id=".$task["id_task"]." class=\"task\"><div class=\"state\"><a class=\"check\" href=\"index.php?action=".$state."&id_task=".$task["id_task"]."\"></a></div>";
     $html.="<div class=\"task-description\">";
     $html.="<h3>".$task["description"]."</h3>";
     $html.="<p>Rappel : ".$task["date_reminder"]."</p></div>";
-    $html.="<div class=\"manage-section\"><a class=\"icon\" href=\"task.php?id_task=".$task["id_task"]."\">modifier<i class=\"fa-regular fa-pen\"></i></a></div></li>";
+    $html.="<div class=\"manage-section\"><a class=\"icon\" href=\"task.php?id_task=".$task["id_task"]."\">modifier<i class=\"fa-regular fa-pen\"></i></a></div><div><p>".$task["priority"]."</p><div><a href=\"\"></a></div></div></li>";
 }
 return $html;
 
 }
-function getTaskById(PDO $db,int $id):array|bool {
+function getTaskById( $db,string $id):array|bool {
     $query= $db ->prepare("SELECT id_task,description,date_reminder,priority,color,done,id_user FROM task WHERE id_task=:id_task ") ;
     $query->execute([
         "id_task"=>$id
@@ -40,4 +41,20 @@ function getTaskById(PDO $db,int $id):array|bool {
     return $query->fetch();
 }
 
+function preVarDump($value){
+    echo "<pre>";
+    var_dump($value);
+    echo "</pre>";
+}
+function taskDone( $id,$dbCo){
+
+    $query = $dbCo->prepare(
+        "UPDATE`task` 
+        SET `done`=1
+        WHERE id_task=:id_task ;");
+        $query->execute([
+            "id_task" => $id
+        ]);
+        header("location:index.php");
+}
 ?>
