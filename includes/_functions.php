@@ -28,7 +28,7 @@ foreach($array as $task){
     $html.="<div class=\"task-description\">";
     $html.="<h3>".$task["description"]."</h3>";
     $html.="<p>Rappel : ".$task["date_reminder"]."</p></div>";
-    $html.="<div class=\"manage-section\"><a class=\"icon\" href=\"task.php?id_task=".$task["id_task"]."\">modifier<i class=\"fa-regular fa-pen\"></i></a></div><div><p>".$task["priority"]."</p><div><a href=\"\"></a></div></div></li>";
+    $html.="<div class=\"manage-section\"><a class=\"icon\" href=\"task.php?id_task=".$task["id_task"]."\"><i class=\"fa-solid fa-pen\"></i></a></div><div class=\"priority-section\"><div class=\"priority-btn\"><a class=\"link\"href=\"index.php?action=up&id_task=".$task["id_task"]."\"><i class=\"fa-solid fa-chevron-up\"></i></a></div><p>".$task["priority"]."</p><div class=\"priority-btn\"><a class=\"link\" href=\"index.php?action=down&id_task=".$task["id_task"]."\"><i class=\"fa-solid fa-chevron-down\"></i></a></div></div></li>";
 }
 return $html;
 

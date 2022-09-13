@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/style.css?<?=time()?>"" rel="stylesheet">
+    <link href="fontawesome-free-6.1.2-web/css/all.css" rel="stylesheet">
     <title><?=$title?></title>
 </head>
 
