@@ -1,16 +1,15 @@
 <?php
 require_once "includes/_functions.php";
 $task = [];
+clearFromTags($_GET);
 if (isset($_GET["id_task"]) && !empty($_GET["id_task"])) {
-    $task = getTaskById($dbCo, strip_tags($_GET["id_task"]));
-    echo "get";
+    $task = getTaskById($dbCo, strip_tags($_GET["id_task"])); 
     if ($task === false) {
         header("location: index.php");
         exit;
     }
 } elseif(isset($_POST["id_task"]) && !empty($_POST["id_task"])){
     $task = $_POST;
-    echo "post";
 }
 $title = $task["description"];
 require_once "includes/_header.php";
@@ -27,16 +26,6 @@ require_once "includes/_header.php";
             <input type="date" name="date_reminder" id="" required class="input" value="<?php echo $task["date_reminder"] ?>">
         </div>
         <div class="form-element">
-            <label for="priority">Priorité</label>
-            <select name="priority" id="priority-lvl" required class="input" value="<?php echo $task["priority"] ?>">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </select>
-        </div>
-        <div class="form-element">
             <label for="color">Couleur</label>
             <select name="color" id="color" required class="input" value="<?php echo $task["color"] ?>">
                 <option value="red">red</option>
@@ -51,27 +40,23 @@ require_once "includes/_header.php";
 </div>
 
 <?php
-
+clearFromTags($_POST);
 preVarDump($_POST);
-
 if (isset($_POST['description']) && strlen($_POST['description']) > 0 && isset($_POST['date_reminder'])){
     $query = $dbCo->prepare(
     "UPDATE`task` 
-    SET `description`=:description,`date_reminder`=:date_reminder,`priority`=:priority,`color`=:color 
+    SET `description`=:description,`date_reminder`=:date_reminder,`color`=:color 
     WHERE id_task=:id_task ;");
     $query->execute([
         "id_task" => strip_tags($_POST["id_task"]),
         "description" => strip_tags($_POST['description']),
         "date_reminder" => strip_tags($_POST['date_reminder']),
-        "priority" => strip_tags($_POST['priority']),
         "color" => strip_tags($_POST['color'])
     ]);
     header("location: index.php");
 }
 
 ?>
-
-</div>
-</body>
-
-</html>
+<?php
+require_once "includes/_footer.php";
+?>

@@ -22,7 +22,6 @@ require_once "includes/_header.php";
     </ul>
 
 
-</div>
-</body>
-
-</html>
+    <?php
+require_once "includes/_footer.php";
+?>

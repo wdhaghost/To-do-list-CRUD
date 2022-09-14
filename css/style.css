@@ -4,12 +4,54 @@
     font-size: 15px;
     font-family:  Helvetica,Arial, sans-serif;
 }
-*{
+/* NORMALIZER */
+
+* {
     box-sizing: border-box;
 }
-body{
+
+body {
     margin: 0;
 }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    padding: 0;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+button {
+    border: none;
+    background: none;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+
 .container{
     width: 100%;
     margin: 0;
@@ -19,20 +61,127 @@ body{
 }
 
 .header{
+    display: flex;
+    justify-content: space-between;
     background: #FFE600;
     width: 100%;
     height: 75px;
-    padding: 0.75rem 0.5rem;
+    padding: 1rem 0.5rem;
     border-bottom: 3px solid black;
     position: absolute;
-    z-index: 50;
     top:0;
+    z-index: 100;
 }
 .main-title{
     font-size: 2rem;
 }
+
+
+.nav-item{
+    text-align: center;
+    width: 100%;
+    
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    border-bottom: black;
+}
+.main-nav-link {
+    display: block;
+    text-align: center;
+    box-shadow: 1px;
+    font-weight: 700;
+    color: black;
+}
+.burger-button{
+}
+.nav-item:hover{
+    color: #FFE600;
+    background-color:#c9b500;
+    transition: all;
+
+}
+
+.nav-burger {
+    display:block;
+    font-size: 3rem;
+    color: var(--primary-color);
+    cursor: pointer;
+}
+.nav-arrow {
+    display:none;
+    font-size: 3rem;
+    color: var(--primary-color);
+    cursor: pointer;
+}
+@media screen AND (max-width:600px) {
+    body{
+        overflow: hidden;
+    }
+    .main-nav-list{
+        background-color: #ffe60096;
+       position: absolute;
+        margin-top: 75px;
+        top:0;
+        right:-100vw;
+        width:100vw;
+        height: 100vh;
+        transition-duration: 0.3s;
+    }
+    .main-nav-list.active{
+        right:0;
+        transition-duration: 0.3s;
+
+    }
+    .nav-burger.active{
+        display:none;
+    }
+    .nav-arrow.active{
+        display:block;
+    }
+}
+@media screen AND (min-width:600px) {
+    .main-nav{
+        display: flex;
+       
+       
+
+    }
+    .main-nav-list{
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        gap:1rem;
+        height: 100%;
+    }
+    .nav-item{
+        display: block;
+        width: 10rem;
+        height:100%;
+        border:1px solid black ;
+        padding: 0.5rem 1rem;
+    }
+    .main-nav-link {
+        display: block;
+        text-align: center;
+        font-size: 1rem;
+        font-weight: 700;
+        color: black;
+    }
+    .nav-burger {
+        display:none;
+        font-size: 3rem;
+        color: var(--primary-color);
+        cursor: pointer;
+    }
+    .nav-arrow {
+        display:none;
+        font-size: 3rem;
+        color: var(--primary-color);
+        cursor: pointer;
+    }
+}
 .task-list{
-    list-style: none;
+    
     margin: 0;
     padding: 0;
     display: flex;
@@ -50,6 +199,7 @@ body{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
 }
 .state{
     width:1rem;
@@ -69,8 +219,10 @@ body{
     bottom: 2rem;
     color: #FFE600;
     font-size: 1.5rem;
+    z-index: 100;
 }
 .link{
+
     display: block;
     width: 100%;
     height: 100%;
@@ -106,16 +258,27 @@ body{
     height:2rem ;
 }
 .manage-section{
-    width: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.208);
 }
 .icon{
     display: block;
     font-size: 1rem;
     color: black;
-
 }
+
+.delete-btn{
+    position: absolute;
+    top:50%;
+}
+.delete-btn:hover{
+    color: red;
+    transition: all;
+    transition-delay: 0.3s;
+}
+
 .priority-section{
     display: flex;
     flex-direction: column;
@@ -129,5 +292,26 @@ body{
     font-weight: 700;
     color: black;
 }
-@media screen AND (min-width:600px) {
+.pop-up{
+    display :block;
+    position: absolute;
+    top :-100vh;
+    left:50%;
+    transform: translate(-50%,0);
+    z-index: 50;
+    width: 345px;
+    height: 200px;
+    background-color: #FFE600;
+    padding: 2rem;
+    transition-duration: 0.3s;
+
+}
+.pop-up.active{
+    top:80px;
+    transition-duration: 0.5s;
+
+}
+
+@media screen and (min-width:768px) {
+   
 }
