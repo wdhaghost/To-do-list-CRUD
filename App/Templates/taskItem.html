@@ -1,0 +1,24 @@
+<li id="{{id_task}}" class="task">
+    <div class="state">
+        <a class="check" href=index.php?action=check&id_task={{id_task}}></a>
+    </div>
+    <div class="task-description">
+        <h3>{{description}}</h3>
+        <p>Rappel :{{date_reminder}}</p>
+    </div>
+    <div class="priority-section">
+        <div class="priority-btn">
+            <a class="icon" href="index.php?action=up&id_task={{id_task}}"><i class="fa-solid fa-chevron-up"></i></a>
+        </div>
+        <p>{{priority}}</p>
+        <div class="priority-btn">
+            <a class="icon" href="index.php?action=down&id_task={{id_task}}"><i
+                    class="fa-solid fa-chevron-down"></i></a>
+        </div>
+    </div>
+    <div class="manage-section">
+        <a class="icon" href="index.php?id_task={{id_task}}"><i class="fa-solid fa-pen"></i></a>
+        <a class="icon delete-btn" href="index.php?action=delete&id_task={{id_task}}"><i
+                class="fa-solid fa-trash"></i></a>
+    </div>
+</li>

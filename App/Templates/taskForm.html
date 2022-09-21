@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/style.css?<?=time()?>" rel="stylesheet">
+    <link href="fontawesome-free-6.1.2-web/css/all.css" rel="stylesheet">
+    <title>{{ttl}}</title>
+</head>
+
+<body>
+<div class="main">
+    <form action="task.php" method="post" class="task-form">
+        <div class="form-element">
+            <label for="description">Description</label>
+            <input type="text" name="description" id="description" placeholder="nouvelle tâche" value="<?php echo $task["description"] ?>" class="input">
+        </div>
+        <div class="form-element">
+            <label for="date_reminder">Date de rappel</label>
+            <input type="date" name="date_reminder" id="" required class="input" value="<?php echo $task["date_reminder"] ?>">
+        </div>
+        <div class="form-element">
+            <label for="color">Couleur</label>
+            <select name="color" id="color" required class="input" value="<?php echo $task["color"] ?>">
+                <option value="red">red</option>
+                <option value="blue">blue</option>
+                <option value="yellow">yellow</option>
+                <option value="green">green</option>
+            </select>
+        </div>
+        <input name="id_task" id="id_task" type="hidden" value="">
+        <input class="submit-btn btn" type="submit" value="Modifier">
+    </form>
+</div>

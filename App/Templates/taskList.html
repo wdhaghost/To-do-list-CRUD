@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/style.css?<?=time()?>" rel="stylesheet">
+    <link href="fontawesome-free-6.1.2-web/css/all.css" rel="stylesheet">
+    <title>{{ttl}}</title>
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="main-title">{{headerTtl}}</h1>
+            <nav class="main-nav">
+                <ul id="main-nav-list" class="main-nav-list">
+                    <li class="nav-item"><a class="main-nav-link" href="">To do List</a></li>
+                    <li class="nav-item"><a class="main-nav-link" href="new_task.php">Nouvelle Tache</a></li>
+                    <li class="nav-item"><a class="main-nav-link" href="index.php?action=taskdone">Taches effetuées</a></li>
+                    </ul>
+                </ul>
+                <button id="nav-burger" class="nav-burger"><i class="fa fa-bars" aria-hidden="true"></i></button>
+                <button id="nav-arrow" class="nav-arrow"> <i class="fa fa-angle-right" aria-hidden="true"></i></button>
+            </nav>
+        </header>
+        <a class="" href="new_task.php">
+            <button class="add-task btn">
+            NEW
+    </button>
+        </a>
+    
+        <ul class="task-list">
+        {{taskList}}
+    </ul>
+</div>
+</body>
+<script src="js/script.js?<?=time()?>"></script>
+</html>
