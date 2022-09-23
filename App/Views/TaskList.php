@@ -29,6 +29,7 @@ class Tasklist extends View
         foreach ($this->getTasks() as $task) {
             $li = new TaskItem($task);
             $html .= $li->getHtml();
+            
         }
         return $html;
         // preVarDump($this->data["taskList"]);

@@ -23,7 +23,14 @@ use App\Models\Task;
 use App\Views\Tasklist;
 
 $controller = new TaskController;
-if (isset($_GET["action"])){   
+
+if(isset($_POST["action"])){
+    if (isset($_POST["id_task"]) && $_POST["action"] == "sendForm") {
+    
+          $controller->sendForm();
+        exit;
+    }
+}elseif (isset($_GET["action"])){   
     if (isset($_GET["id_task"]) && $_GET["action"] === "check") {
         $controller->check(strip_tags($_GET["id_task"]));
         exit;
@@ -36,12 +43,14 @@ if (isset($_GET["action"])){
     }elseif (isset($_GET["id_task"]) && ($_GET["action"] === "up"||$_GET["action"] === "down")) {
         $controller->move($_GET["action"],strip_tags($_GET["id_task"]));
         exit;
+    }elseif (isset($_GET["id_task"]) && $_GET["action"] === "update") {
+        $controller->edit(strip_tags($_GET["id_task"]));
+        preVarDump($_POST,$_SESSION);
+
+        exit;
     }
 }
 $controller->index();
 
 
-
 ?>
-
-</ul>

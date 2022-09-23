@@ -51,6 +51,7 @@ class Task extends Model
         ]);
         header("location:index.php");
     }
+    
     /**
      * get the highest priority in the database for that are not done
      *
@@ -82,6 +83,19 @@ class Task extends Model
             "new_priority" => $new_priority,
             "old_priority" => $priority
         ]);
+    }
+    public function updateTask(){
+        $query = self::$connection->prepare(
+            "UPDATE`task` 
+            SET `description`=:description,`date_reminder`=:date_reminder,`color`=:color 
+            WHERE id_task=:id_task ;");
+            $query->execute([
+                "id_task" => strip_tags($_POST["id_task"]),
+                "description" => strip_tags($_POST['description']),
+                "date_reminder" => strip_tags($_POST['date_reminder']),
+                "color" => strip_tags($_POST['color'])
+            ]);
+            header("location: index.php");
     }
 
 }
