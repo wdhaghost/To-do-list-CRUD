@@ -42,7 +42,7 @@ function getTaskById($db, string $id): array|bool
     return $query->fetch();
 }
 
-function preVarDump(...$value)
+function preVarDump($value)
 {
     echo "<pre>";
     var_dump($value);

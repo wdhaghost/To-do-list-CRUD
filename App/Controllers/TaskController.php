@@ -81,10 +81,9 @@ class TaskController {
     }
     public function sendForm(){
         
-        preVarDump($_SESSION['myToken']);
-
-        if(isset($_SESSION["myToken"])&&$_POST["token"]===$_SESSION["myToken"]){
         
+        if(isset($_SESSION["myToken"])&&$_POST["token"]===$_SESSION["myToken"]){
+            
             $taskModel=new Task;
         
             $taskModel->updateTask();
