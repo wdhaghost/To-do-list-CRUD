@@ -6,13 +6,19 @@ use App\Views\TaskForm;
 use App\Views\Tasklist;
 
 class TaskController {
-    public function sessionStarter(){
+
+    public function __construct()
+    {
         session_start();
     }
+    
+
+
     public function createToken(){
         
         $_SESSION["myToken"]=md5(uniqid(mt_rand(), true));
     }
+
     public function index(){
         //create connection to PDO
         $tasks=new Task;
@@ -29,6 +35,7 @@ class TaskController {
         $view->display();
 
     }
+
     public function taskdone(){
         //create connection to PDO
         $tasks=new Task;
@@ -59,6 +66,7 @@ class TaskController {
     public function edit(int $id){
     
         $this->createToken();
+
         $taskModel=new Task;
         
         $data=array_merge($taskModel->getTaskById($id),[
@@ -67,16 +75,19 @@ class TaskController {
             "myToken"=>$_SESSION["myToken"]]);
         // preVarDump($data);
         $view= new TaskForm($data);
+
         $view->display();
         
     }
     public function sendForm(){
-        $this->sessionStarter();
-        preVarDump($_SESSION);
-    
+        
+        preVarDump($_SESSION['myToken']);
+
         if(isset($_SESSION["myToken"])&&$_POST["token"]===$_SESSION["myToken"]){
-        $taskModel=new Task;
-        $taskModel->updateTask();
+        
+            $taskModel=new Task;
+        
+            $taskModel->updateTask();
         }
     }
 
